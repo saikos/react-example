@@ -1,5 +1,12 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## After cloning
+Install node modules by running:
+
+### `npm install`
+
+This command will download all dependencies required to run the React app.
+
 ## Available Scripts
 
 In the project directory, you can run:

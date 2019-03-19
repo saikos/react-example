@@ -1,4 +1,4 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). You’ll need to have Node >= 6 and npm >= 5.2 on your machine for everything to function properly.
 
 ## After cloning
 Install node modules by running:

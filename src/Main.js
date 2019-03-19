@@ -1,21 +1,45 @@
 import React, { Component } from 'react';
+import Messages from './Messages';
 
 let cssStyle = {
     redClass: {
-        backgroundColor: '#ee0000'
+        color: '#ee0000',
+        backgroundColor: 'dddddd'
     }
 };
 
 class Main extends Component {
     
-    componentDidMount() {
-        //fetch the ajax call here
+    constructor(props) {
+        super(props);
+        this.state = {
+            messages:{}
+        };
+    }
+    
+    componentDidMount() {        
+        console.log("Main component did mount");
+        window.$.ajax({
+            url: 'http://localhost:3000/texts.json',
+            dataType: 'json',                       
+            type: 'GET'            
+       }).then ( data => {
+           console.log("Updating UI");
+           this.setState({
+               messages: data
+           });
+       });
     }
     
     render() {
         return (
-            <div className='row'>
-                <h1 style={cssStyle.redClass}>Welcome User</h1>
+            <div>
+                <div className='row'>
+                    <h1 style={cssStyle.redClass}>Welcome User</h1>                
+                </div>
+                <div className="row">
+                    <Messages list={this.state.messages} />
+                </div>
             </div>
         );
     }

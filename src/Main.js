@@ -35,10 +35,16 @@ class Main extends Component {
         return (
             <div>
                 <div className='row'>
-                    <h1 style={cssStyle.redClass}>Welcome User</h1>                
+                    <h1 style={cssStyle.redClass}>
+                        Welcome User
+                        &nbsp;
+                        <small>
+                            ({Object.keys(this.state.messages).length})
+                        </small>
+                    </h1>                
                 </div>
                 <div className="row">
-                    <Messages list={this.state.messages} />
+                    <Messages list={this.state.messages} title='List of messages'/>
                 </div>
             </div>
         );

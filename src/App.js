@@ -6,6 +6,7 @@ import Nav from './Nav';
 import Main from './Main';
 import Other from './Other';
 import Footer from './Footer';
+import Login from './Login';
 
 class App extends Component {
   render() {
@@ -15,6 +16,7 @@ class App extends Component {
                 <Nav />
                 <Route path="/" exact component={Main} />
                 <Route path="/other" component={Other} />
+                <Route path="/login" component={Login} />
                 <Footer />
             </div>
         </Router>

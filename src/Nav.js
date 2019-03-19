@@ -36,7 +36,7 @@ class Nav extends Component {
 
                           <NavLink label="Home" to="/" location={this.props.location.pathname} />
                           <NavLink label="Other" to="/other" location={this.props.location.pathname} />
-
+                          <NavLink label="Login" to="/login" location={this.props.location.pathname} />        
 
                           <li className="nav-item dropdown">
                             <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

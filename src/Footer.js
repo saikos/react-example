@@ -19,7 +19,7 @@ class Footer extends Component {
         
         const renderedList = [];
         lt.forEach(i => {
-            renderedList.push(<span>{i}</span>); 
+            renderedList.push(<span key={i}>{i}</span>); 
         });
         
         return (            
@@ -35,7 +35,7 @@ class Footer extends Component {
                 </div>
                 <div className='col-lg-2'>
                     {lt.map(function(i) {
-                        return <b>{i}</b>;
+                        return <b key={i}>{i}</b>;
                     })}
                 </div>
                 <div className='col-lg-2'>
@@ -43,7 +43,7 @@ class Footer extends Component {
                 </div>
                 <div className='col-lg-2'>
                     {Object.keys(test).map(k => {
-                        return <div>{k} = {test[k]}</div>;
+                        return <div key={k}>{k} = {test[k]}</div>;
                     })}
                 </div>
             </div> 

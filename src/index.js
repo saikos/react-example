@@ -6,4 +6,11 @@ import test, { CONST } from './TestImports';
 
 console.log(test);
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const userData = { 
+    token: localStorage.getItem('token'),
+    username: localStorage.getItem('username')
+}
+
+console.log(userData);
+
+ReactDOM.render(<App userData={userData} />, document.getElementById('root'));

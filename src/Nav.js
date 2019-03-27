@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from "react-router-dom";
+import { UserConsumer } from './UserContext';
 
 const css = {
     fullWidth: {
@@ -20,6 +21,49 @@ const NavLink = props => {
     }    
 }
 
+/*
+ * This is the same as above, more verbose.
+ */
+class NavMenu extends Component {
+    render() {
+        console.log('Rendering menu for user: ', this.props.context.username);
+        if (this.props.context.username) {
+            return (
+                <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul className="navbar-nav mr-auto">               
+                        <NavLink label="Home" to="/main" location={this.props.location.pathname} />
+                        <NavLink label="Other" to="/other" location={this.props.location.pathname} />
+                        <NavLink label="Logout" to='/logout' location={this.props.location.pathname} />
+                    </ul>                                      
+                </div>
+            );
+        }
+        else {
+            return (
+                <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul className="navbar-nav mr-auto">               
+                        <NavLink label="Login" to="/login" location={this.props.location.pathname} />                        
+                    </ul>                                      
+                </div>                
+            );
+        }
+    }
+}
+
+/*
+ * Back to minimum verbosity!
+ */
+const UserAvatar = props => {
+    if (props.context.username) {
+        return (
+            <span className='navbar-text'>{props.context.username}</span>
+        );
+    }
+    else {
+        return null;
+    }
+}
+
 class Nav extends Component {    
     
     render() {
@@ -31,26 +75,17 @@ class Nav extends Component {
                         <span className="navbar-toggler-icon"></span>
                     </button>
 
-                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul className="navbar-nav mr-auto">
-
-                          <NavLink label="Home" to="/" location={this.props.location.pathname} />
-                          <NavLink label="Other" to="/other" location={this.props.location.pathname} />
-                          <NavLink label="Login" to="/login" location={this.props.location.pathname} />        
-
-                          <li className="nav-item dropdown">
-                            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              Dropdown link
-                            </a>
-                            <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                              <a className="dropdown-item" href="#">Action</a>
-                              <a className="dropdown-item" href="#">Another action</a>
-                              <a className="dropdown-item" href="#">Something else here</a>
-                            </div>
-                          </li>
-
-                        </ul>                                      
-                    </div>
+                    <UserConsumer>
+                    { context => 
+                        <React.Fragment>
+                            <NavMenu 
+                                location={this.props.location} 
+                                context={context}
+                            />
+                            <UserAvatar context={context} />
+                        </React.Fragment>
+                    }
+                    </UserConsumer>
                 </nav>
             </div>
         );

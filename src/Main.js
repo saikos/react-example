@@ -36,7 +36,7 @@ class Main extends Component {
             <div>
                 <div className='row'>
                     <h1 style={cssStyle.redClass}>
-                        Welcome User
+                        Messages
                         &nbsp;
                         <small>
                             ({Object.keys(this.state.messages).length})

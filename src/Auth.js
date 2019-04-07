@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { UserContext } from './UserContext';
+import $ from 'jquery';
 
 export class Login extends Component {        
     
@@ -19,7 +20,7 @@ export class Login extends Component {
         const p = this.password.current.value;
         console.log('Submitting...', u, p);
         
-        window.$.ajax({
+        $.ajax({
             url: 'http://localhost:8080/WebApp/api/login',
             dataType: 'json',                       
             type: 'POST',         
@@ -28,6 +29,9 @@ export class Login extends Component {
                 password: p
             }
         }).then(json => {   
+            
+            console.log(json);
+            
             //store the user's data in local storage
             //to make them available for the next
             //user's visit

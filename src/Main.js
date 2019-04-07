@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Messages from './Messages';
+import $ from 'jquery';
 
 let cssStyle = {
     redClass: {
@@ -19,7 +20,7 @@ class Main extends Component {
     
     componentDidMount() {        
         console.log("Main component did mount");
-        window.$.ajax({
+        $.ajax({
             url: 'http://localhost:3000/texts.json',
             dataType: 'json',                       
             type: 'GET'            
